@@ -5,8 +5,9 @@ import NavbarDesktop from './components/NavbarDesktop.vue';
 import NavbarMobile from './components/NavbarMobile.vue';
 
 const { width } = useWindowSize()
+const mobileScreenSize = 480
 const isMobile = computed(() => {
-  return +width.value < 480;
+  return width.value < mobileScreenSize;
 });
 
 </script>
