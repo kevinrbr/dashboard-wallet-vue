@@ -11,6 +11,7 @@ module.exports = {
       'black': '#000',
       'primary': '#C4A0FF',
       'neutral': '#1D1C21',
+      'gray': '#747474',
     },
     fontFamily: {
       'sans': ['Satoshi-Regular', 'Helvetica', 'Arial', 'sans-serif'],

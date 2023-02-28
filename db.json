@@ -1,0 +1,22 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "description": "Armored Chopper Chase",
+            "category": "funko",
+            "price": 18,
+            "quantite": 1,
+            "buyingDate": "28/02/2023",
+            "inHand": true
+        },
+        {
+            "id": 1,
+            "description": "Snoop Dog Lakers",
+            "category": "funko",
+            "price": 24,
+            "quantite": 2,
+            "buyingDate": "19/02/2023",
+            "inHand": false
+        }
+    ]
+}

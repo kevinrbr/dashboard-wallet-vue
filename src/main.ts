@@ -15,7 +15,7 @@ import {
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [{ path: "/", component: () => import("./pages/Stock.vue") }],
+  routes: [{ path: "/", component: () => import("./views/Stock.vue") }],
 });
 
 library.add(faCubes, faLayerGroup, faPlus, faGear);
