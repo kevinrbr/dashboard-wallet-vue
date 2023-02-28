@@ -1,10 +1,13 @@
 <script setup lang="ts">
   import Navbar from './components/Navbar.vue';
+import Stock from './views/Stock.vue';
 </script>
 
 <template>
   <Navbar />
-  <router-view></router-view>
+  <Suspense>
+    <router-view></router-view>
+  </Suspense>
 </template>
 
 <style>
