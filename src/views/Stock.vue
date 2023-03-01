@@ -20,14 +20,18 @@ const items = ref<IItems[]>(await dataService.getStock());
       <span class="text-center">In-Hand</span>
     </div>
     <div v-for="i in items" key="i.id" class="grid mb-10 sm:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr]">
-        <p class="font-title uppercase">{{ i.name }}</p>
+        <div class="font-title flex items-center">
+          <img :src="i.image" class="w-[15%]"/>
+          <p class="uppercase ml-6 sm:max-w-[200px]">{{ i.name }}</p>
+        </div>
         <p class="uppercase text-center">{{ i.category }}</p>
         <p class="text-center">{{ i.price }}</p>
         <p class="text-center">{{ i.quantity }}</p>
         <p class="text-center">{{ i.buyingDate }}</p>
         <div class="text-center flex flex-col justify-center items-center">
-          <input type="checkbox" v-model="i.inHand" @input="dataService.updateStock(i)">
+          <input type="checkbox" v-model="i.inHand" @change="dataService.updateStock(i)">
           <label class="mt-1">{{ i.inHand ? "Stock" : "Preorder" }}</label>
+          {{ i.inHand }}
         </div>
     </div>
   </section>

@@ -13,6 +13,7 @@ const updateStock = async function (item: IItems) {
     item
   );
   const updatedHero = response.data;
+  console.log(updatedHero);
   return updatedHero;
 };
 

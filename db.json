@@ -2,21 +2,23 @@
   "products": [
     {
       "id": 1,
+      "image": "./images/one-piece-1131-chopper-en-armure-chase-2-1669110369_0x460.webp",
       "name": "Armored Chopper Chase",
       "category": "funko",
       "price": 18,
       "quantity": 1,
       "buyingDate": "28/02/2023",
-      "inHand": false
+      "inHand": true
     },
     {
       "id": 2,
+      "image": "./images/one-piece-1131-chopper-en-armure-chase-2-1669110369_0x460.webp",
       "name": "Snoop Dog Lakers",
       "category": "funko",
       "price": 24,
       "quantity": 2,
       "buyingDate": "19/02/2023",
-      "inHand": true
+      "inHand": false
     }
   ]
 }
