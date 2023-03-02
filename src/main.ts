@@ -11,6 +11,9 @@ import {
   faLayerGroup,
   faPlus,
   faGear,
+  faCircleCheck,
+  faCircleXmark,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const router = createRouter({
@@ -18,7 +21,15 @@ const router = createRouter({
   routes: [{ path: "/", component: () => import("./views/Stock.vue") }],
 });
 
-library.add(faCubes, faLayerGroup, faPlus, faGear);
+library.add(
+  faCubes,
+  faLayerGroup,
+  faPlus,
+  faGear,
+  faCircleCheck,
+  faCircleXmark,
+  faChevronRight
+);
 const app = createApp(App);
 
 app.use(router).component("font-awesome-icon", FontAwesomeIcon);

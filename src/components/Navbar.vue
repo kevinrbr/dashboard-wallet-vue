@@ -1,5 +1,5 @@
 <template>
-    <nav class="absolute bottom-0 right-0 left-0 bg-neutral sm:top-0 sm:right-auto sm:w-[220px] sm:rounded-tr-2xl sm:rounded-br-2xl">
+    <nav class="fixed bottom-0 right-0 left-0 bg-neutral sm:top-0 sm:right-auto sm:w-[220px] sm:rounded-tr-2xl sm:rounded-br-2xl">
         <ul class="flex h-16 items-center justify-between py-0 px-8 sm:flex-col sm:pt-[150px] sm:h-auto sm:items-start sm:gap-6">
             <li class="text-white text-xl">
                 <a href="#">

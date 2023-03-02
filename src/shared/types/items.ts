@@ -5,6 +5,7 @@ export interface IItems {
   category: string;
   price: number;
   quantity: number;
+  sold: boolean;
   buyingDate: string;
   inHand: boolean;
 }

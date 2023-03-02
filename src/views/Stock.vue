@@ -2,9 +2,12 @@
 
 import { dataService } from '@/shared/data.service';
 import { IItems } from '@/shared/types/items';
-import { ref } from 'vue';
+import { reactive, ref, watch } from 'vue';
 
 const items = ref<IItems[]>(await dataService.getStock());
+
+  watch(items, (newValue) => {
+    }, { deep: true })
 
 </script>
 
@@ -19,7 +22,7 @@ const items = ref<IItems[]>(await dataService.getStock());
       <span class="text-center">Date d'achat</span>
       <span class="text-center">In-Hand</span>
     </div>
-    <div v-for="i in items" key="i.id" class="grid mb-10 sm:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr]">
+    <div v-for="i in items" key="i.id" class="grid mb-10 items-center sm:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr]">
         <div class="font-title flex items-center">
           <img :src="i.image" class="w-[15%]"/>
           <p class="uppercase ml-6 sm:max-w-[200px]">{{ i.name }}</p>
@@ -29,9 +32,20 @@ const items = ref<IItems[]>(await dataService.getStock());
         <p class="text-center">{{ i.quantity }}</p>
         <p class="text-center">{{ i.buyingDate }}</p>
         <div class="text-center flex flex-col justify-center items-center">
-          <input type="checkbox" v-model="i.inHand" @change="dataService.updateStock(i)">
+          <input type="checkbox" v-model="i.inHand" @change="dataService.updateProduct(i)">
           <label class="mt-1">{{ i.inHand ? "Stock" : "Preorder" }}</label>
-          {{ i.inHand }}
+        </div>
+        <div>
+          <font-awesome-icon icon="fa-solid fa-circle-check" class="text-xl" />
+          <font-awesome-icon 
+            icon="fa-solid fa-circle-xmark" 
+            class="text-xl text-red" 
+            @click="() => {
+              dataService.deleteProduct(i);
+              items = items.filter(item => item.id !== i.id);
+            }"
+          />
+          <font-awesome-icon icon="fa-solid fa-chevron-right" class="text-2xl" />
         </div>
     </div>
   </section>
