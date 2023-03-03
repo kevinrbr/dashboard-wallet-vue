@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import Navbar from './components/Navbar.vue';
-import Stock from './views/Stock.vue';
 </script>
 
 <template>
@@ -12,7 +11,7 @@ import Stock from './views/Stock.vue';
 
 <style>
   .container {
-    margin-top: 60px;
-    padding: 0 50px;
+    margin-top: 80px;
+    padding: 0 100px;
   }
 </style>
