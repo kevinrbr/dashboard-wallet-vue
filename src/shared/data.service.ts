@@ -1,9 +1,10 @@
 import axios from "axios";
+import { supabase } from "@/supabase";
 import { IItems } from "@/shared/types/items";
 
 const getStock = async function () {
-  const response = await axios.get("http://localhost:3000/products/");
-  const data = response.data;
+  const { data, error } = await supabase.from("stock").select();
+  console.log(data);
   return data;
 };
 
