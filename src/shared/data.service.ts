@@ -4,8 +4,10 @@ import { IItems } from "@/shared/types/items";
 
 const getStock = async function () {
   const { data, error } = await supabase.from("stock").select();
-  console.log(data);
-  return data;
+  if (!data) {
+    throw new Error("Erreur de la récupération des données.");
+  }
+  return data as IItems[];
 };
 
 const updateProduct = async function (item: IItems) {
