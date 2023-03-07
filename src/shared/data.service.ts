@@ -20,21 +20,19 @@ const getStock = async function () {
 };
 
 const updateProduct = async function (item: IItems) {
-  const { data, error } = await supabase.from("stock").upsert(item).select();
+  const { error } = await supabase.from("stock").upsert(item).select();
 
   if (!item) {
     throw new Error(`db error ${error}`);
   }
-
-  return data;
 };
 
 const deleteProduct = async function (item: IItems) {
-  const response = await axios.delete(
-    `http://localhost:3000/products/${item.id}`
-  );
-  getStock();
-  return response;
+  const { error } = await supabase.from("stock").delete().eq("id", item.id);
+
+  if (!item) {
+    throw new Error(`db error ${error}`);
+  }
 };
 
 export const dataService = {
