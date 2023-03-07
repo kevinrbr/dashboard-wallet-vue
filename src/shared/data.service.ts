@@ -1,13 +1,21 @@
 import axios from "axios";
+import { format } from "date-fns";
 import { supabase } from "@/supabase";
 import { IItems } from "@/shared/types/items";
 
 const getStock = async function () {
   const { data, error } = await supabase.from("stock").select();
+
   if (!data) {
-    throw new Error("Erreur de la récupération des données.");
+    throw new Error(`db error ${error}`);
   }
-  return data as IItems[];
+
+  const stockList = data.map((i) => {
+    i.buying_date = format(new Date(i.buying_date), "yyyy-MM-dd");
+    return i;
+  });
+
+  return stockList as IItems[];
 };
 
 const updateProduct = async function (item: IItems) {
