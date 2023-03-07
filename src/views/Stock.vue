@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { dataService } from '@/shared/data.service';
-import { IItems } from '@/shared/types/items';
+import { IItems } from '@/types/items';
 import { reactive, ref, watch } from 'vue';
 
 const items = ref<IItems[]>(await dataService.getStock());

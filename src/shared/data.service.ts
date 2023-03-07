@@ -1,7 +1,8 @@
 import axios from "axios";
 import { format } from "date-fns";
 import { supabase } from "@/supabase";
-import { IItems } from "@/shared/types/items";
+import { IItems } from "@/types/items";
+import { dateFormat } from "@/shared/constants";
 
 const getStock = async function () {
   const { data, error } = await supabase.from("stock").select();
@@ -11,7 +12,7 @@ const getStock = async function () {
   }
 
   const stockList = data.map((i) => {
-    i.buying_date = format(new Date(i.buying_date), "yyyy-MM-dd");
+    i.buying_date = format(new Date(i.buying_date), dateFormat);
     return i;
   });
 
@@ -19,12 +20,13 @@ const getStock = async function () {
 };
 
 const updateProduct = async function (item: IItems) {
-  const response = await axios.put(
-    `http://localhost:3000/products/${item.id}`,
-    item
-  );
-  const updatedHero = response.data;
-  return updatedHero;
+  const { data, error } = await supabase.from("stock").upsert(item).select();
+
+  if (!item) {
+    throw new Error(`db error ${error}`);
+  }
+
+  return data;
 };
 
 const deleteProduct = async function (item: IItems) {
